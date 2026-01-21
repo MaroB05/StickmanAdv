@@ -16,16 +16,9 @@ void init_scene() {
     }
 }
 
-// Clear the terminal screen (cross-platform approach)
 void clear_screen() {
     // ANSI escape code to clear screen and move cursor to top-left
     cout << "\033[2J\033[1;1H";
-    
-    // Alternative for Windows (comment out the above, uncomment below):
-    // system("cls");
-    
-    // Alternative for Unix/Linux (comment out ANSI, uncomment below):
-    // system("clear");
 }
 
 // Draw a single character at position (row, col)
@@ -80,14 +73,38 @@ void draw_scene() {
 }
 
 int main() {
-    // Initial draw
-    draw_scene();
-    
-    // Keep redrawing until user presses Enter
-    while (getchar() != '\n') {
-        draw_scene();
+  // Initial draw
+  // draw_scene();
+  init_scene();
+  int y = 10;
+  int x = 40;
+  char key_pressed = ' ';
+  
+  // Keep redrawing until user presses Enter
+  while (key_pressed != 'q') {
+    init_scene();
+    draw_stickman(y,x);
+    clear_screen();
+    render_scene();
+    key_pressed = getchar();
+    switch (key_pressed) {
+      case 'w':
+        y -= 1;
+        break;
+      case 's':
+        y += 1;
+        break;
+      case 'a':
+        x -= 1;
+        break;
+      case 'd':
+        x += 1;
+        break;
+      default:
+        break;
     }
-    
-    cout << "Program ended.\n";
-    return 0;
+  }
+  
+  cout << "Program ended.\n";
+  return 0;
 }

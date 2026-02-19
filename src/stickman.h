@@ -37,12 +37,16 @@ public:
   }
 
   char* get_sprite(){
-    state = (state+1)%2;
     return sprites[state];
+  }
+
+  void next_state(){
+    state = (state+1)%2;
   }
 
   void move(int a, int b){
     x += a;
     y += b;
+    next_state();
   }
 };

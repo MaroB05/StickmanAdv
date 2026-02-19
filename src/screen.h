@@ -43,7 +43,7 @@ public:
       return nullptr;
   }
 
-  bool draw_char(int x, int y, char c){
+  inline bool draw_char(int x, int y, char c){
     if (x >= 0 && x < width && y >= 0 && y < height){
       pixels[y][x] = c;
     }
@@ -61,7 +61,7 @@ public:
 
     for (int y = 0; y < s_height; y++){
       for (int x = 0; x < s_width; x++){
-        pixels[y + py][px + x] = sprite[x + y * s_width];
+        draw_char(x + px, y + py, sprite[x + y * s_width]);
       }
     }
   }

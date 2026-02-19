@@ -26,7 +26,7 @@ public:
 
   void clear_screen() {
       // ANSI escape code to clear screen and move cursor to top-left
-      // cout << "\033[2J\033[1;1H";
+      cout << "\033[2J\033[1;1H";
   }
   
   // TODO: To implement a dynamic array for handling new stickmen

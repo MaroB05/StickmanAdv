@@ -7,7 +7,6 @@ private:
   static const int sprite_size = width * height;
   char sprites[2][12] = {{' ', 'o', ' ', '/', '|', '\\', ' ', '|', ' ', '/', ' ', '\\'}
   , {' ', 'o', ' ', '\\', '|', '/', ' ', '|', ' ', '/', ' ', '\\'}};
-  // int positions[2*COMP_NUM] = {0};
 
 public:
   stickman(int a, int b){

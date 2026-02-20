@@ -2,10 +2,11 @@ class stickman{
 private:
   int x,y;
   int state;
+  static const int state_num = 2;
   static const int width = 3;
   static const int height = 4;
   static const int sprite_size = width * height;
-  char sprites[2][12] = {{' ', 'o', ' ', '/', '|', '\\', ' ', '|', ' ', '/', ' ', '\\'}
+  char sprites[state_num][sprite_size] = {{' ', 'o', ' ', '/', '|', '\\', ' ', '|', ' ', '/', ' ', '\\'}
   , {' ', 'o', ' ', '\\', '|', '/', ' ', '|', ' ', '/', ' ', '\\'}};
 
 public:
@@ -41,7 +42,7 @@ public:
   }
 
   void next_state(){
-    state = (state+1)%2;
+    state = (state+1) % state_num;
   }
 
   void move(int a, int b){

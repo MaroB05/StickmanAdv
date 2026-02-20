@@ -17,8 +17,9 @@ public:
   }
 
   void print_sprite(int c){
-    for (int i = 0; i < width * height; i++)
-      cout << sprites[c][i];
+    if (c < state_num && c >= 0)
+      for (int i = 0; i < width * height; i++)
+        cout << sprites[c][i];
   }
 
   int get_width(){

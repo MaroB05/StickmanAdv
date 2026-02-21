@@ -4,12 +4,13 @@ private:
   Point pos;
   // int x,y;
   int state;
-  static const int state_num = 2;
+  static const int state_num = 3;
   static const int width = 3;
   static const int height = 4;
   static const int sprite_size = width * height;
   char sprites[state_num][sprite_size] = {{' ', 'o', ' ', '/', '|', '\\', ' ', '|', ' ', '/', ' ', '\\'}
-  , {' ', 'o', ' ', '\\', '|', '/', ' ', '|', ' ', '/', ' ', '\\'}};
+  , {' ', 'o', ' ', '\\', '|', '/', ' ', '|', ' ', '/', '|', ' '}
+  , {' ', 'o', ' ', '\\', '|', '/', ' ', '|', ' ', ' ', '|', '\\'}};
 
 public:
   Stickman(int a, int b){

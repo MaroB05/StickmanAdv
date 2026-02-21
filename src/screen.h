@@ -1,16 +1,14 @@
 #include "stickman.h"
 
-class scene{
+class Scene{
 private:
-  int width, height, obj_num;
+  int width, height;
   char** pixels = NULL;
-  stickman* men = NULL;
   
 public:
-  scene(int w, int h){
+  Scene(int w, int h){
     width = w;
     height = h;
-    obj_num = 0;
     pixels = new char*[height];
     for (int i = 0; i < height; i++){
       pixels[i] = new char[width];

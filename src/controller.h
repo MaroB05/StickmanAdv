@@ -64,8 +64,9 @@ public:
       scene->init();
       draw_objects();
       scene->render();
+
       key_pressed = getchar();
-      if (key_pressed == EOF) 
+      if (key_pressed == EOF) // clear err from stdin to read new characters
         clearerr(stdin); 
 
       if (!on_floor(player))

@@ -1,0 +1,9 @@
+Features:
+  [X] Stickman animation
+  [X] Gravity
+  [ ] Jump
+
+Tasks:
+  [ ] Controller class
+  [ ] Dynamic Array
+  [ ] Sprite generator script

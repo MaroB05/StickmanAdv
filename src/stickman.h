@@ -1,6 +1,8 @@
-class stickman{
+#include "point.h"
+class Stickman{
 private:
-  int x,y;
+  Point pos;
+  // int x,y;
   int state;
   static const int state_num = 2;
   static const int width = 3;
@@ -10,9 +12,8 @@ private:
   , {' ', 'o', ' ', '\\', '|', '/', ' ', '|', ' ', '/', ' ', '\\'}};
 
 public:
-  stickman(int a, int b){
-    x = a;
-    y = b;
+  Stickman(int a, int b){
+    pos = Point(a,b);
     state = 0;
   }
 
@@ -30,12 +31,29 @@ public:
     return height;
   }
 
+  Point get_pos(){
+    return pos;
+  }
+
+  void set_pos(int a, int b){
+    pos.x = a;
+    pos.y = b;
+  }
+
+  void set_y(int b){
+    pos.y = b;
+  }
+
+  void set_x(int a){
+    pos.x = a;
+  }
+
   int px(){
-    return x;
+    return pos.x;
   }
 
   int py(){
-    return y;
+    return pos.y;
   }
 
   char* get_sprite(){
@@ -47,8 +65,7 @@ public:
   }
 
   void move(int a, int b){
-    x += a;
-    y += b;
-    next_state();
+    pos.x += a;
+    pos.y += b;
   }
 };

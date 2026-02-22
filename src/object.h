@@ -149,7 +149,7 @@ public:
     capacity /= 2;
     temp = array;
     array = new Object*[capacity];
-    move();
+    move_elements();
     delete[] temp;
     temp = nullptr;
   }

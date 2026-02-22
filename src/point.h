@@ -5,8 +5,17 @@ public:
     x = 0;
     y = 0;
   }
+
   Point(int a, int b){
     x = a;
     y = b;
+  }
+  
+  Point operator-(Point p){
+    return Point(x-p.x,y-p.y);
+  }
+
+  Point operator+(Point p){
+    return Point(x+p.x,y+p.y);
   }
 };

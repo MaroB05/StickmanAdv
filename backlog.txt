@@ -3,8 +3,16 @@ Features:
   [X] Gravity
   [X] Jump
   [ ] all objects are animated
+  [ ] Health: add a Health bar to the top screen
+  [ ] Enemy
+  [ ] Platform
+  [ ] Single Bullet
+  [ ] Multi Bullet
+  [ ] Reflective Bullets
+  [ ] Scrolling Camera
+  
 
 Tasks:
-  [ ] Controller class
+  [X] Controller class
   [X] Dynamic Array
   [ ] Sprite generator script

@@ -176,4 +176,8 @@ public:
     elements--;
   }
 
+  Object* operator[](int i){
+    return array[i];
+  }
+
 };

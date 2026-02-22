@@ -93,6 +93,7 @@ public:
   Objects_array(int n){
     elements = 0;
     capacity = n;
+    array = new Object*[n];
   }
 
   Object* get_element(int index){

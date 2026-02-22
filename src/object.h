@@ -96,13 +96,17 @@ public:
     array = new Object*[n];
   }
 
-  Object* get_element(int index){
+  int get_num_elements(){
+    return elements;
+  }
+
+  Object* get_object(int index){
     if (index < elements)
       return array[index];
     return nullptr;
   }
 
-  void* set_element(int index, Object* obj){
+  void set_element(int index, Object* obj){
     array[index] = obj;
   }
 

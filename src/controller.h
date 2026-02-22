@@ -1,43 +1,38 @@
 #include "config.h"
 #include "screen.h"
+#include "stickman.h"
 
 class Controller{
 private:
   Scene* scene = nullptr;
-  int obj_num;
   const int gravity = 2;
-  Stickman* objects = nullptr;
+  Objects_array objects;
 
 public:
   Controller(){
-    obj_num = 0;
     terminal_config();
+    objects = Objects_array(1);
   }
 
-  // TODO: To implement a dynamic array for handling new stickmen
   void add_stickman(int x, int y){
-    obj_num++;
-    objects = new Stickman(x, y);
+    objects.add_object(new Stickman(x, y));
     cout << "Stickman added\n";
   }
 
-  Stickman* get_object(int index){
-    if (index+1 <= obj_num)
-      return objects + index;
-    else 
-      return nullptr;
+  Object* get_object(int index){
+      return objects.get_object(index);
   }
 
-  int on_floor(Stickman* object){
+  int on_floor(Object* object){
     return (object->py() + object->get_height() >= scene->get_height());
   }
 
-  void draw_object(Stickman& stick){
-    char* sprite = stick.get_sprite();
-    const int s_width = stick.get_width();
-    const int s_height = stick.get_height();
-    const int px = stick.px();
-    const int py = stick.py();
+  void draw_object(Object* stick){
+    char* sprite = stick->get_sprite();
+    const int s_width = stick->get_width();
+    const int s_height = stick->get_height();
+    const int px = stick->px();
+    const int py = stick->py();
 
     for (int y = 0; y < s_height; y++){
       for (int x = 0; x < s_width; x++){
@@ -47,8 +42,8 @@ public:
   }
 
   void draw_objects(){
-    for (int i = 0; i < obj_num; i++){
-      draw_object(objects[i]);
+    for (int i = 0; i < objects.get_num_elements(); i++){
+      draw_object(objects.get_object(i));
     }
   }
 
@@ -57,7 +52,7 @@ public:
     
     int key_pressed = ' ';
     add_stickman(10, 10);
-    Stickman* player = get_object(0);
+    Stickman* player = static_cast<Stickman*>(get_object(0));
 
     while (key_pressed != 'q'){
       scene->clear_screen();

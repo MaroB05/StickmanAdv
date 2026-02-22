@@ -3,7 +3,7 @@ protected:
   Point pos;
   int state, state_num;
   int width, height;
-  int sprite_size;
+  int sprite_size, gravity; // gravity is a bool
   char** sprites = nullptr;
 
 public:
@@ -11,6 +11,7 @@ public:
     state_num = 0;
     width = 0;
     height = 0;
+    gravity = 1;
     sprite_size = width*height;
   }
 
@@ -18,11 +19,28 @@ public:
     state_num = n;
     width = w;
     height = h;
+    gravity = 1;
+    sprite_size = width*height;
+  }
+
+  Object(int w, int h, int n, int g){
+    state_num = n;
+    width = w;
+    height = h;
+    gravity = g;
     sprite_size = width*height;
   }
 
   ~Object(){
     delete[] sprites;
+  }
+
+  int is_gravitational(){
+    return gravity;
+  }
+
+  void toggle_gravity(int g){
+    gravity = g;
   }
 
   int get_width(){

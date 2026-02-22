@@ -47,6 +47,17 @@ public:
     }
   }
 
+  inline void apply_gravity(){
+    Object* temp;
+    for (int i = 0; i < objects.get_num_elements(); i++){
+      temp = objects[i];
+      if (!on_floor(temp))
+        temp->move(0,1);
+      else
+        temp->set_y(scene->get_height() - temp->get_height());
+    }
+  }
+
   void run(int w, int h){
     scene = new Scene(w, h);
     
@@ -64,10 +75,7 @@ public:
       if (key_pressed == EOF) // clear err from stdin to read new characters
         clearerr(stdin); 
 
-      if (!on_floor(player))
-        player->move(0,1);
-      else
-        player->set_y(scene->get_height() - player->get_height());
+      apply_gravity();
 
       if (key_pressed == 'w' && on_floor(player)){
         player->move(0,-10);

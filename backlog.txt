@@ -1,9 +1,10 @@
 Features:
   [X] Stickman animation
   [X] Gravity
-  [ ] Jump
+  [X] Jump
+  [ ] all objects are animated
 
 Tasks:
   [ ] Controller class
-  [ ] Dynamic Array
+  [X] Dynamic Array
   [ ] Sprite generator script

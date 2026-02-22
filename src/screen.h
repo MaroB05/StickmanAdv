@@ -1,5 +1,3 @@
-#include "stickman.h"
-
 class Scene{
 private:
   int width, height;

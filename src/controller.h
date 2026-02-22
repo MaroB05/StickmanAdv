@@ -51,6 +51,9 @@ public:
     Object* temp;
     for (int i = 0; i < objects.get_num_elements(); i++){
       temp = objects[i];
+      if (!temp->is_gravitational())
+        continue;
+
       if (!on_floor(temp))
         temp->move(0,1);
       else

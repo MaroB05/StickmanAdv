@@ -66,9 +66,8 @@ public:
 
       if (!on_floor(player))
         player->move(0,1);
-      else{
+      else
         player->set_y(scene->get_height() - player->get_height());
-      }
 
       if (key_pressed == 'w' && on_floor(player)){
         player->move(0,-10);

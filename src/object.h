@@ -1,6 +1,6 @@
 class Object{
 protected:
-  Point pos;
+  Point pos, velocity;
   int state, state_num;
   int width, height;
   int sprite_size, gravity; // gravity is a bool
@@ -12,22 +12,30 @@ public:
     width = 0;
     height = 0;
     gravity = 1;
+    pass_through = 1;
+    velocity = Point(0,0);
     sprite_size = width*height;
   }
 
-  Object(int w, int h, int n){
+  Object(int a, int b, int w, int h, int n){
+    pos = Point(a,b);
+    velocity = Point(0,0);
     state_num = n;
     width = w;
     height = h;
     gravity = 1;
+    pass_through = 1;
     sprite_size = width*height;
   }
 
-  Object(int w, int h, int n, int g){
+  Object(int a, int b, int w, int h, int n, int g){
+    pos = Point(a,b);
+    velocity = Point(0,0);
     state_num = n;
     width = w;
     height = h;
     gravity = g;
+    pass_through = 1;
     sprite_size = width*height;
   }
 
@@ -91,9 +99,23 @@ public:
       state = (state+1) % state_num;
   }
 
-  void move(int a, int b){
-    pos.x += a;
-    pos.y += b;
+  Point get_velocity(){
+    return velocity;
+  }
+
+  void set_velocity(int a, int b){
+    velocity.x = a;
+    velocity.y = b;
+  }
+
+  void accelerate(int a, int b){
+    velocity.x = (velocity.x + a);
+    velocity.y = (velocity.y + b);
+  }
+
+  void decelerate(int a, int b){
+    velocity.x = (velocity.x - a)/2;
+    velocity.y = (velocity.y - b)/2;
   }
 };
 

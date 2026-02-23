@@ -4,6 +4,7 @@ protected:
   int state, state_num;
   int width, height;
   int sprite_size, gravity; // gravity is a bool
+  int pass_through;
   char** sprites = nullptr;
 
 public:
@@ -50,6 +51,10 @@ public:
   void toggle_gravity(int g){
     gravity = g;
   }
+
+  int is_penetrable(){ return pass_through; }
+
+  void toggle_penetrable(int p){ pass_through = p; }
 
   int get_width(){
     return width;

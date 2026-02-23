@@ -1,14 +1,10 @@
-#include "point.h"
-#include "object.h"
-
 #define WIDTH 3
 #define HEIGHT 4
 #define STATE_NUM 3
 
 class Stickman : public Object{
 public:
-  Stickman(int a, int b): Object(WIDTH, HEIGHT, STATE_NUM){
-    pos = Point(a,b);
+  Stickman(int a, int b): Object(a, b, WIDTH, HEIGHT, STATE_NUM){
     state = 0;
     char sprites_temp[state_num][sprite_size] = {{' ', 'o', ' ', '/', '|', '\\', ' ', '|', ' ', '/', ' ', '\\'}
     , {' ', 'o', ' ', '\\', '|', '/', ' ', '|', ' ', '/', '|', ' '}

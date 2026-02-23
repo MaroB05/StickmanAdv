@@ -1,3 +1,8 @@
+#define RIGHT 1
+#define DOWN 2
+#define LEFT 3
+#define UP 4
+
 class Object{
 protected:
   Point pos, velocity;
@@ -122,6 +127,47 @@ public:
     velocity.x = (velocity.x - a)/2;
     velocity.y = (velocity.y - b)/2;
   }
+
+  void move(){
+    pos.x += velocity.x;
+    pos.y += velocity.y;
+  }
+
+  inline int collided(Object* obj){
+    int counter = 0;
+    int diff_x = obj->px() - pos.x;
+    int diff_y = obj->py() - pos.y;
+
+    if (diff_x > 0 && diff_x <= width)
+      counter++;
+    else if (diff_x < 0 && abs(diff_x) < obj->get_width()) 
+      counter++;
+    else if (diff_x == 0)
+      counter++;
+
+    if (diff_y > 0 && diff_y < height)
+      counter++;
+    else if(diff_y < 0 && abs(diff_y) < obj->get_height())
+      counter++;
+    else if (diff_y == 0)
+      counter++;
+
+    if (counter == 2){
+      Point prev = pos - velocity;
+      diff_x = obj->px() - prev.x;
+      diff_y = obj->py() - prev.y;
+      if (diff_x > 0 && diff_x <= width)
+        return RIGHT; // Right
+      else if (diff_y > 0 && diff_y < height)
+        return DOWN; // Down
+      else if (diff_x < 0 && abs(diff_x) < obj->get_width()) 
+        return LEFT; // Left
+      else if(diff_y < 0 && abs(diff_y) < obj->get_height())
+        return UP; // Up
+    }
+    return 0;
+  }
+
 };
 
 class Objects_array{

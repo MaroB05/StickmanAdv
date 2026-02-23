@@ -1,12 +1,16 @@
 #include "config.h"
+#include "point.h"
 #include "screen.h"
+#include "object.h"
 #include "stickman.h"
+#include "platform.h"
 
 class Controller{
 private:
   Scene* scene = nullptr;
   const int gravity = 2;
   Objects_array objects;
+  Objects_array platforms;
 
 public:
   Controller(){
@@ -16,11 +20,10 @@ public:
 
   void add_stickman(int x, int y){
     objects.add_object(new Stickman(x, y));
-    cout << "Stickman added\n";
   }
 
   Object* get_object(int index){
-      return objects.get_object(index);
+      return objects[index];
   }
 
   int on_floor(Object* object){
@@ -43,7 +46,8 @@ public:
 
   void draw_objects(){
     for (int i = 0; i < objects.get_num_elements(); i++){
-      draw_object(objects.get_object(i));
+      draw_object(objects[i]);
+      draw_object(platforms[i]);
     }
   }
 
@@ -66,8 +70,13 @@ public:
     
     int key_pressed = ' ';
     add_stickman(10, 10);
-    Stickman* player = static_cast<Stickman*>(get_object(0));
+    Platform* ground = new Platform(10, 15, 5, 2);
+    platforms.add_object(ground);
+    platforms.add_object(new Platform(0, h, w, h));
 
+    Stickman* player = static_cast<Stickman*>(get_object(0));
+    int counter = 0;
+    int collided = 0;
     while (key_pressed != 'q'){
       scene->clear_screen();
       scene->init();

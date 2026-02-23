@@ -58,10 +58,14 @@ public:
       if (!temp->is_gravitational())
         continue;
 
-      if (!on_floor(temp))
-        temp->move(0,1);
-      else
-        temp->set_y(scene->get_height() - temp->get_height());
+      if (!on_floor(temp)){
+        temp->accelerate(0,1);
+        temp->move();
+      }
+      else{
+        temp->set_y()
+      }
+        // temp->set_y(scene->get_height() - temp->get_height());
     }
   }
 
@@ -86,27 +90,44 @@ public:
       key_pressed = getchar();
       if (key_pressed == EOF) // clear err from stdin to read new characters
         clearerr(stdin); 
+      
+      for (int i = 0; i < objects.get_num_elements(); i++){
+        if (collided = player->collided(objects[i])){
+          // if (collided == 1)
+          //   cout << "Right!\n";
+          // else if (collided == 2)
+          //   cout << "Down!\n";
+          // else if (collided == 3)
+          //   cout << "Left!\n";
+          // else if (collided == 4)
+          //   cout << "Up!\n";
+        }
+      }
 
-      apply_gravity();
+      player->set_velocity(0, 0);
+      if (!on_floor(player))
+        apply_gravity();
 
       if (key_pressed == 'w' && on_floor(player)){
-        player->move(0,-10);
+        player->accelerate(0,-10);
         player->next_state();
       }
       else if (key_pressed == 's' && !on_floor(player)){
-        player->move(0,1);
+        player->accelerate(0,1);
         player->next_state();
       }
       else if (key_pressed == 'a'){
-        player->move(-1,0);
+        player->accelerate(-1,0);
         player->next_state();
       }
       else if (key_pressed == 'd'){
-        player->move(1,0);
+        player->accelerate(1,0);
         player->next_state();
       }
+
+      player->move();
     }
-    cout << "Game Ended!\n";
+    cout << "Game Ended!\n" << "Collided: " << counter;
 
   }
 

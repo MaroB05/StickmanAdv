@@ -27,7 +27,12 @@ public:
   }
 
   int on_floor(Object* object){
-    return (object->py() + object->get_height() >= scene->get_height());
+    for (int i = 0; i < platforms.get_num_elements(); i++){
+      if (object->collided(platforms[i]) == DOWN)
+        return 1;
+    }
+    return 0;
+    // return (object->py() + object->get_height() >= scene->get_height());
   }
 
   void draw_object(Object* stick){

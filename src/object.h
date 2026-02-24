@@ -138,7 +138,7 @@ public:
     int diff_x = obj->px() - pos.x;
     int diff_y = obj->py() - pos.y;
 
-    if (diff_x > 0 && diff_x <= width)
+    if (diff_x > 0 && diff_x < width)
       counter++;
     else if (diff_x < 0 && abs(diff_x) < obj->get_width()) 
       counter++;

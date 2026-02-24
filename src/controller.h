@@ -49,10 +49,11 @@ public:
   }
 
   void draw_objects(){
-    for (int i = 0; i < objects.get_num_elements(); i++){
-      draw_object(objects[i]);
+    for (int i = 0; i < platforms.get_num_elements(); i++)
       draw_object(platforms[i]);
-    }
+
+    for (int i = 0; i < objects.get_num_elements(); i++)
+      draw_object(objects[i]);
   }
 
   inline void apply_gravity(){

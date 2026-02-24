@@ -41,11 +41,9 @@ public:
     const int px = object->px();
     const int py = object->py();
 
-    for (int y = 0; y < s_height; y++){
-      for (int x = 0; x < s_width; x++){
+    for (int y = 0; y < s_height; y++)
+      for (int x = 0; x < s_width; x++)
         scene->draw_char(x + px, y + py, sprite[x + y * s_width]);
-      }
-    }
   }
 
   void draw_objects(){
@@ -96,14 +94,6 @@ public:
       
       for (int i = 0; i < objects.get_num_elements(); i++){
         if (collided = player->collided(objects[i])){
-          // if (collided == 1)
-          //   cout << "Right!\n";
-          // else if (collided == 2)
-          //   cout << "Down!\n";
-          // else if (collided == 3)
-          //   cout << "Left!\n";
-          // else if (collided == 4)
-          //   cout << "Up!\n";
         }
       }
 

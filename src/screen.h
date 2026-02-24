@@ -9,8 +9,10 @@ public:
     height = h;
     pixels = new char*[height];
     for (int i = 0; i < height; i++){
-      pixels[i] = new char[width];
+      pixels[i] = new char[width+2];
       fill(pixels[i], pixels[i]+width, ' ');
+      pixels[i][width] = '|';
+      pixels[i][width+1] = '\0';
     }
   }
 

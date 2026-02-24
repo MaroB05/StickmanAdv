@@ -35,12 +35,12 @@ public:
     // return (object->py() + object->get_height() >= scene->get_height());
   }
 
-  void draw_object(Object* stick){
-    char* sprite = stick->get_sprite();
-    const int s_width = stick->get_width();
-    const int s_height = stick->get_height();
-    const int px = stick->px();
-    const int py = stick->py();
+  void draw_object(Object* object){
+    char* sprite = object->get_sprite();
+    const int s_width = object->get_width();
+    const int s_height = object->get_height();
+    const int px = object->px();
+    const int py = object->py();
 
     for (int y = 0; y < s_height; y++){
       for (int x = 0; x < s_width; x++){

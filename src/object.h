@@ -260,6 +260,7 @@ public:
     delete array[index];
     array[index] = nullptr;
     elements--;
+    array[index] = array[elements];
   }
 
   void remove_object(Object* obj){
@@ -267,8 +268,8 @@ public:
     if (index == -1)
       return;
     delete array[index];
-    array[index] = array[elements-1];
     elements--;
+    array[index] = array[elements];
   }
 
   Object* operator[](int i){

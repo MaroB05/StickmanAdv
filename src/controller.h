@@ -78,9 +78,8 @@ public:
     
     int key_pressed = ' ';
     add_stickman(10, 10);
-    Platform* ground = new Platform(10, 15, 5, 2);
-    platforms.add_object(ground);
-    platforms.add_object(new Platform(0, h, w, h));
+    platforms.add_object(new Platform(5, 15, 5, 2));
+    platforms.add_object(new Platform(13, 17, 3, 1));
 
     Stickman* player = static_cast<Stickman*>(get_object(0));
     int counter = 0;

@@ -68,9 +68,8 @@ public:
         temp->move();
       }
       else{
-        temp->set_y()
+        temp->set_velocity(0,0);
       }
-        // temp->set_y(scene->get_height() - temp->get_height());
     }
   }
 
@@ -115,7 +114,6 @@ public:
 
       if (key_pressed == 'w' && on_floor(player)){
         player->accelerate(0,-10);
-        player->next_state();
       }
       else if (key_pressed == 's' && !on_floor(player)){
         player->accelerate(0,1);

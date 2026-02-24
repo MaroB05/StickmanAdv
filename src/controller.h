@@ -103,6 +103,7 @@ public:
 
       if (key_pressed == 'w' && on_floor(player)){
         player->accelerate(0,-10);
+        player->reset_state();
       }
       else if (key_pressed == 's' && !on_floor(player)){
         player->accelerate(0,1);

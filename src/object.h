@@ -97,6 +97,10 @@ public:
   char* get_sprite(){
     return sprites[state];
   }
+  
+  void reset_state(){
+    state = 0;
+  }
 
   void print_sprite(int c){
     if (c < state_num && c >= 0)

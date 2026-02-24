@@ -31,8 +31,7 @@ public:
       if (object->collided(platforms[i]) == DOWN)
         return 1;
     }
-    return 0;
-    // return (object->py() + object->get_height() >= scene->get_height());
+    return (object->py() + object->get_height() >= scene->get_height());
   }
 
   void draw_object(Object* object){

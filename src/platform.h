@@ -5,7 +5,7 @@ public:
     sprites = new char*[state_num];
     for (int i = 0; i < state_num; i++){
       sprites[i] = new char[sprite_size];
-      fill(sprites[i], sprites[i] + sprite_size, '=');
+      fill(sprites[i], sprites[i] + sprite_size, '-');
     }
   }
 };

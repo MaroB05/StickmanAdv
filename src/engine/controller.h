@@ -1,9 +1,4 @@
-#include "config.h"
-#include "point.h"
-#include "screen.h"
-#include "object.h"
-#include "stickman.h"
-#include "platform.h"
+#include "../config.h"
 
 class Controller{
 private:

@@ -1,5 +1,10 @@
 #include <iostream>
 using namespace std;
+#include "entities/point.h"
+#include "entities/object.h"
+#include "entities/platform.h"
+#include "entities/stickman.h"
+#include "engine/screen.h"
 
 #if defined(__linux__)
 #include <unistd.h>

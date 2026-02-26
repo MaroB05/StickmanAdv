@@ -88,10 +88,10 @@ public:
       if (key_pressed == EOF) // clear err from stdin to read new characters
         clearerr(stdin); 
       
-      for (int i = 0; i < objects.get_num_elements(); i++){
-        if (collided = player->collided(objects[i])){
-        }
-      }
+      // for (int i = 0; i < objects.get_num_elements(); i++){
+      //   if (collided = player->collided(objects[i])){
+      //   }
+      // }
 
       player->set_velocity(0, 0);
       if (!on_floor(player))

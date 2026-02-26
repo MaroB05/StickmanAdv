@@ -2,10 +2,10 @@ Features:
   [X] Stickman animation
   [X] Gravity
   [X] Jump
-  [ ] all objects are animated
+  [X] all objects are animated
   [ ] Health: add a Health bar to the top screen
-  [ ] Enemy
-  [ ] Platform
+  [ ] Enemy: colored in red
+  [X] Platform
   [ ] Single Bullet
   [ ] Multi Bullet
   [ ] Reflective Bullets

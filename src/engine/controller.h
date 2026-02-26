@@ -7,6 +7,8 @@ private:
   const int gravity = 2;
   Objects_array objects;
   Objects_array platforms;
+  Objects_array enemies;
+  Objects_array bullets;
 
 public:
   Controller(){

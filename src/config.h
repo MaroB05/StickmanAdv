@@ -4,6 +4,7 @@ using namespace std;
 #include "entities/object.h"
 #include "entities/platform.h"
 #include "entities/stickman.h"
+#include "entities/bullet.h"
 #include "engine/screen.h"
 
 #if defined(__linux__)

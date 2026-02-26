@@ -14,6 +14,7 @@ protected:
 
 public:
   Object(){
+    state = 0;
     state_num = 0;
     width = 0;
     height = 0;
@@ -24,6 +25,7 @@ public:
   }
 
   Object(int a, int b, int w, int h, int n){
+    state = 0;
     pos = Point(a,b);
     velocity = Point(0,0);
     state_num = n;
@@ -35,6 +37,7 @@ public:
   }
 
   Object(int a, int b, int w, int h, int n, int g){
+    state = 0;
     pos = Point(a,b);
     velocity = Point(0,0);
     state_num = n;

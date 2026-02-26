@@ -1,4 +1,5 @@
 #include "../config.h"
+#define draw_objects_array(obj_arr) for (int i = 0; i < obj_arr.get_num_elements(); i++) draw_object(obj_arr[i]);
 
 class Controller{
 private:
@@ -42,11 +43,9 @@ public:
   }
 
   void draw_objects(){
-    for (int i = 0; i < platforms.get_num_elements(); i++)
-      draw_object(platforms[i]);
-
-    for (int i = 0; i < objects.get_num_elements(); i++)
-      draw_object(objects[i]);
+    draw_objects_array(platforms);
+    draw_objects_array(objects);
+    draw_objects_array(bullets);
   }
 
   inline void apply_gravity(){

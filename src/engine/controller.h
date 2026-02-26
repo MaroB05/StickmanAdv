@@ -113,11 +113,22 @@ public:
         player->accelerate(1,0);
         player->next_state();
       }
+      else if (key_pressed == ' '){
+        bullets.add_object(new Bullet(player->px(), player->py()));
+        for (int i = 0; i < bullets.get_num_elements(); i++){
+          bullets[i]->set_velocity(1,0);
+        }
+      }
 
+      for (int i = 0; i < bullets.get_num_elements(); i++){
+        bullets[i]->move();
+        if (bullets[i]->px() >= scene->get_width())
+          bullets.remove_object(i);
+      }
       player->move();
     }
     cout << "Game Ended!\n" << "Collided: " << counter;
-
+    cout << "\nAlive bullets:" << bullets.get_num_elements() << endl;
   }
 
 };

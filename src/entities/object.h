@@ -6,6 +6,7 @@
 class Object{
 protected:
   Point pos, velocity;
+  int health;
   int state, state_num;
   int width, height;
   int sprite_size, gravity; // gravity is a bool
@@ -14,6 +15,7 @@ protected:
 
 public:
   Object(){
+    health = 0;
     state = 0;
     state_num = 0;
     width = 0;
@@ -25,6 +27,7 @@ public:
   }
 
   Object(int a, int b, int w, int h, int n){
+    health = 0;
     state = 0;
     pos = Point(a,b);
     velocity = Point(0,0);
@@ -37,6 +40,7 @@ public:
   }
 
   Object(int a, int b, int w, int h, int n, int g){
+    health = 0;
     state = 0;
     pos = Point(a,b);
     velocity = Point(0,0);
@@ -48,8 +52,20 @@ public:
     sprite_size = width*height;
   }
 
+  Object(int a, int b, int w, int h, int n, int g, int _health): Object(a, b, w, h, n, g){
+    health = _health;
+  }
+
   ~Object(){
     delete[] sprites;
+  }
+
+  void decrease_health(){
+    health--;
+  }
+
+  int get_health(){
+    return health;
   }
 
   int is_gravitational(){

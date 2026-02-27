@@ -67,6 +67,20 @@ public:
         temp->set_velocity(0,0);
       }
     }
+
+    for (int i = 0; i < enemies.get_num_elements(); i++){
+      temp = enemies[i];
+      if (!temp->is_gravitational())
+        continue;
+
+      if (!on_floor(temp)){
+        temp->accelerate(0,1);
+        temp->move();
+      }
+      else{
+        temp->set_velocity(0,0);
+      }
+    }
   }
 
   void run(int w, int h){

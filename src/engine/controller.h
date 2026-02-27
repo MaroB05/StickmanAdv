@@ -124,12 +124,10 @@ public:
       player->next_state();
     }
     else if (key_pressed == ' '){
-      Bullet* bullet_ptr = new Bullet(player->px(), player->py());
-      bullet_ptr->set_velocity(bullet_direction);
-      if (bullet_direction.x == 1)
-        bullet_ptr->set_state(0);
-      else
-        bullet_ptr->set_state(1);
+      Bullet* bullet_ptr = player->shoot(bullet_direction);
+      bullets.add_object(bullet_ptr);
+      
+      bullet_ptr = enemies[0]->shoot(Point(-1,0));
       bullets.add_object(bullet_ptr);
     }
   }
@@ -169,6 +167,9 @@ public:
       for (int j = 0; j < bullets.get_num_elements(); j++){
         for (int i = 0; i < enemies.get_num_elements(); i++){
           if (collided = enemies[i]->collided(bullets[j])){
+            if ((collided == RIGHT && bullets[i]->get_velocity() != Point(-1,0)) ||
+              (collided == LEFT && bullets[i]->get_velocity() != Point(1,0)))
+              continue;
             bullets.remove_object(j);
             enemies[i]->decrease_health();
 

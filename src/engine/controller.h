@@ -52,6 +52,9 @@ public:
     draw_objects_array(enemies);
     draw_objects_array(objects);
     draw_objects_array(bullets);
+    for (int i = 0; i < player->get_health(); i++){
+      scene->draw_char(i, 0, '+');
+    }
   }
 
   inline void apply_gravity(){

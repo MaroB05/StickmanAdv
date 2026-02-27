@@ -2,9 +2,10 @@
 using namespace std;
 #include "entities/point.h"
 #include "entities/object.h"
+#include "entities/bullet.h"
+#include "entities/creature.h"
 #include "entities/platform.h"
 #include "entities/stickman.h"
-#include "entities/bullet.h"
 #include "engine/screen.h"
 
 #if defined(__linux__)

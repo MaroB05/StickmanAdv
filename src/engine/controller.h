@@ -170,6 +170,7 @@ public:
             if ((collided == RIGHT && bullets[i]->get_velocity() != Point(-1,0)) ||
               (collided == LEFT && bullets[i]->get_velocity() != Point(1,0)))
               continue;
+
             bullets.remove_object(j);
             enemies[i]->decrease_health();
 

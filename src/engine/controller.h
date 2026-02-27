@@ -85,8 +85,7 @@ public:
 
   void init_game(int w, int h){
     scene = new Scene(w, h);
-    
-    int key_pressed = ' ';
+
     add_stickman(10, 10);
     platforms.add_object(new Platform(5, 15, 5, 2));
     platforms.add_object(new Platform(13, 17, 4, 1));

@@ -83,7 +83,7 @@ public:
     }
   }
 
-  void run(int w, int h){
+  void init_game(int w, int h){
     scene = new Scene(w, h);
     
     int key_pressed = ' ';
@@ -91,7 +91,58 @@ public:
     platforms.add_object(new Platform(5, 15, 5, 2));
     platforms.add_object(new Platform(13, 17, 4, 1));
 
-    Stickman* player = static_cast<Stickman*>(get_object(0));
+    player = static_cast<Stickman*>(get_object(0));
+
+    enemies.add_object(new Stickman(14, 10));
+  }
+
+  inline void control(int &key_pressed){
+    key_pressed = getchar();
+    if (key_pressed == EOF) // clear err from stdin to read new characters
+      clearerr(stdin); 
+
+    if (key_pressed == 'w' && on_floor(player)){
+      player->accelerate(0,-10);
+      player->reset_state();
+    }
+    else if (key_pressed == 's' && !on_floor(player)){
+      player->accelerate(0,1);
+      player->next_state();
+    }
+    else if (key_pressed == 'a'){
+      player->accelerate(-1,0);
+      player->next_state();
+    }
+    else if (key_pressed == 'd'){
+      player->accelerate(1,0);
+      player->next_state();
+    }
+    else if (key_pressed == ' '){
+      bullets.add_object(new Bullet(player->px(), player->py()));
+      for (int i = 0; i < bullets.get_num_elements(); i++){
+        bullets[i]->set_velocity(1,0);
+      }
+    }
+  }
+
+  inline void update(){
+    for (int i = 0; i < bullets.get_num_elements(); i++){
+      bullets[i]->move();
+      if (bullets[i]->px() >= scene->get_width())
+        bullets.remove_object(i);
+    }
+    
+    for (int i = 0; i < enemies.get_num_elements(); i++){
+      enemies[i]->move();
+    }
+
+    player->move();
+  }
+
+  void run(int w, int h){
+    init_game(w, h);
+    
+    int key_pressed = ' ';
     int counter = 0;
     int collided = 0;
     while (key_pressed != 'q'){
@@ -100,51 +151,29 @@ public:
       draw_objects();
       scene->render();
 
-      key_pressed = getchar();
-      if (key_pressed == EOF) // clear err from stdin to read new characters
-        clearerr(stdin); 
-      
-      // for (int i = 0; i < objects.get_num_elements(); i++){
-      //   if (collided = player->collided(objects[i])){
-      //   }
-      // }
-
       player->set_velocity(0, 0);
       if (!on_floor(player))
         apply_gravity();
+      
+      control(key_pressed);
+      
+      for (int j = 0; j < bullets.get_num_elements(); j++){
+        for (int i = 0; i < enemies.get_num_elements(); i++){
+          if (collided = enemies[i]->collided(bullets[j])){
+            bullets.remove_object(j);
+            enemies[i]->decrease_health();
 
-      if (key_pressed == 'w' && on_floor(player)){
-        player->accelerate(0,-10);
-        player->reset_state();
-      }
-      else if (key_pressed == 's' && !on_floor(player)){
-        player->accelerate(0,1);
-        player->next_state();
-      }
-      else if (key_pressed == 'a'){
-        player->accelerate(-1,0);
-        player->next_state();
-      }
-      else if (key_pressed == 'd'){
-        player->accelerate(1,0);
-        player->next_state();
-      }
-      else if (key_pressed == ' '){
-        bullets.add_object(new Bullet(player->px(), player->py()));
-        for (int i = 0; i < bullets.get_num_elements(); i++){
-          bullets[i]->set_velocity(1,0);
+            if (enemies[i]->get_health() == 0)
+              enemies.remove_object(i);
+          }
         }
       }
 
-      for (int i = 0; i < bullets.get_num_elements(); i++){
-        bullets[i]->move();
-        if (bullets[i]->px() >= scene->get_width())
-          bullets.remove_object(i);
-      }
-      player->move();
+      update();
     }
     cout << "Game Ended!\n" << "Collided: " << counter;
-    cout << "\nAlive bullets:" << bullets.get_num_elements() << endl;
+    cout << "\nAlive bullets: " << bullets.get_num_elements() << endl;
+    if (enemies[0])
+      cout << "enemy health: " << enemies[0]->get_health() << endl;
   }
-
 };

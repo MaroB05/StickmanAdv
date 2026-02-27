@@ -3,9 +3,9 @@
  * STATE_NUM 3
  * */
 
-class Stickman : public Object{
+class Stickman : public Creature{
 public:
-  Stickman(int a, int b): Object(a, b, 3, 4, 3, 3, 3){
+  Stickman(int a, int b): Creature(a, b, 3, 4, 3, 3){
     // health = 3;
     char sprites_temp[state_num][sprite_size] = {{' ', 'o', ' ', '/', '|', '\\', ' ', '|', ' ', '/', ' ', '\\'}
     , {' ', 'o', ' ', '\\', '|', '/', ' ', '|', ' ', '/', '|', ' '}

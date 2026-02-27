@@ -134,7 +134,7 @@ public:
   inline void update(){
     for (int i = 0; i < bullets.get_num_elements(); i++){
       bullets[i]->move();
-      if (bullets[i]->px() >= scene->get_width())
+      if (bullets[i]->px() >= scene->get_width() || bullets[i]->px() + bullets[i]->get_width() <= 0)
         bullets.remove_object(i);
     }
     

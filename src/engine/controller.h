@@ -9,7 +9,7 @@ private:
   Point bullet_direction;
   Objects_array objects;
   Objects_array platforms;
-  Objects_array enemies;
+  Creatures_array enemies;
   Objects_array bullets;
 
 public:

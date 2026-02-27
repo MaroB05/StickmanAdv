@@ -5,6 +5,7 @@ class Controller{
 private:
   Scene* scene = nullptr;
   const int gravity = 2;
+  Stickman* player;
   Objects_array objects;
   Objects_array platforms;
   Objects_array enemies;
@@ -46,6 +47,7 @@ public:
 
   void draw_objects(){
     draw_objects_array(platforms);
+    draw_objects_array(enemies);
     draw_objects_array(objects);
     draw_objects_array(bullets);
   }

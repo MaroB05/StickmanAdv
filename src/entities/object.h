@@ -116,6 +116,10 @@ public:
   char* get_sprite(){
     return sprites[state];
   }
+
+  void set_state(int s){
+    state = s;
+  }
   
   void reset_state(){
     state = 0;
@@ -134,6 +138,10 @@ public:
 
   Point get_velocity(){
     return velocity;
+  }
+
+  void set_velocity(Point v){
+    velocity = v;
   }
 
   void set_velocity(int a, int b){

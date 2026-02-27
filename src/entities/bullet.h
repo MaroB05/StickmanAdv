@@ -7,8 +7,8 @@ private:
 
 public:
 
-  Bullet(int a, int b) : Object(a, b, 2, 1, 1){
-    char sprites_temp[state_num][sprite_size] = {{'=', '>'}};
+  Bullet(int a, int b) : Object(a, b, 2, 1, 2){
+    char sprites_temp[state_num][sprite_size] = {{'=', '>'}, {'<', '='}};
     sprites = new char*[state_num];
     for (int i = 0; i < state_num; i++){
       sprites[i] = new char[sprite_size];

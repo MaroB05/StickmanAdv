@@ -4,8 +4,12 @@
  * */
 
 class Stickman : public Object{
+private:
+  int health;
+
 public:
-  Stickman(int a, int b): Object(a, b, 3, 4, 3){
+  Stickman(int a, int b): Object(a, b, 3, 4, 3, 3, 3){
+    // health = 3;
     char sprites_temp[state_num][sprite_size] = {{' ', 'o', ' ', '/', '|', '\\', ' ', '|', ' ', '/', ' ', '\\'}
     , {' ', 'o', ' ', '\\', '|', '/', ' ', '|', ' ', '/', '|', ' '}
     , {' ', 'o', ' ', '\\', '|', '/', ' ', '|', ' ', ' ', '|', '\\'}};
@@ -15,5 +19,9 @@ public:
       for (int j = 0; j < sprite_size; j++)
         sprites[i][j] = sprites_temp[i][j];
     }
+  }
+
+  Stickman(int a, int b, int h): Stickman(a, b){
+    health = h;
   }
 };

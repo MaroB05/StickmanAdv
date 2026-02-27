@@ -6,6 +6,7 @@ private:
   Scene* scene = nullptr;
   const int gravity = 2;
   Stickman* player;
+  Point bullet_direction;
   Objects_array objects;
   Objects_array platforms;
   Objects_array enemies;
@@ -14,6 +15,7 @@ private:
 public:
   Controller(){
     terminal_config();
+    bullet_direction = Point(1,0);
     objects = Objects_array(1);
   }
 
@@ -109,18 +111,23 @@ public:
       player->next_state();
     }
     else if (key_pressed == 'a'){
+      bullet_direction.x = -1;
       player->accelerate(-1,0);
       player->next_state();
     }
     else if (key_pressed == 'd'){
+      bullet_direction.x = 1;
       player->accelerate(1,0);
       player->next_state();
     }
     else if (key_pressed == ' '){
-      bullets.add_object(new Bullet(player->px(), player->py()));
-      for (int i = 0; i < bullets.get_num_elements(); i++){
-        bullets[i]->set_velocity(1,0);
-      }
+      Bullet* bullet_ptr = new Bullet(player->px(), player->py());
+      bullet_ptr->set_velocity(bullet_direction);
+      if (bullet_direction.x == 1)
+        bullet_ptr->set_state(0);
+      else
+        bullet_ptr->set_state(1);
+      bullets.add_object(bullet_ptr);
     }
   }
 

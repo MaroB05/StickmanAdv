@@ -4,9 +4,6 @@
  * */
 
 class Stickman : public Object{
-private:
-  int health;
-
 public:
   Stickman(int a, int b): Object(a, b, 3, 4, 3, 3, 3){
     // health = 3;

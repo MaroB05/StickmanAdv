@@ -3,11 +3,11 @@ Features:
   [X] Gravity
   [X] Jump
   [X] all objects are animated
-  [ ] Health: add a Health bar to the top screen
+  [X] Health: add a Health bar to the top screen
   [ ] Enemy: colored in red
   [X] Platform
-  [ ] Single Bullet
-  [ ] Multi Bullet
+  [X] Single Bullet
+  [X] Multi Bullet
   [ ] Reflective Bullets
   [ ] Scrolling Camera
   

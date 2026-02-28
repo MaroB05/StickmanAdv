@@ -7,7 +7,7 @@ Features:
   [ ] Enemy: colored in red
   [X] Platform
   [X] Single Bullet
-  [X] Multi Bullet
+  [X] Multi Bullet: when bullets collide they disappear
   [ ] Reflective Bullets
   [ ] Scrolling Camera
   
